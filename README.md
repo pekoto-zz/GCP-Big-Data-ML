@@ -5,6 +5,10 @@ https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/welcome
 
 ## Google Cloud Architecture
 
-    -------------------------------
-        Big Data/ML Products
-    -------------------------------
+    -------------------------------------
+            Big Data/ML Products
+    -------------------------------------
+    Computer Power | Storage | Networking
+    -------------------------------------
+                Security
+                
