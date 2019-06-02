@@ -3,12 +3,19 @@ Notes for the Google Cloud Platform Big Data and Machine Learning Fundamentals c
 
 https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/welcome
 
-## Google Cloud Architecture
+## 1. Google Cloud Architecture
 
-    -------------------------------------
-            Big Data/ML Products
-    -------------------------------------
-    Computer Power | Storage | Networking
-    -------------------------------------
-                Security
+    -----------------------------------------
+            2. Big Data/ML Products
+    -----------------------------------------
+     1. Compute Power | Storage | Networking
+    -----------------------------------------
+               0. Security
+    -----------------------------------------
+
                 
+0. Auth
+1. Process, store, and deliver pipelines, ML models, etc.
+2. Abstract away scaling, infrastructure
+
+
