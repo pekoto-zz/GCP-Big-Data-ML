@@ -47,5 +47,5 @@ Go to the Earthquake sample in `earthquakevm`.
 
 The `ingest.sh` shell script contains the script to ingest data (`less ingest.sh`). This script basically just deletes existing data and then `wget`s a new CSV file containing the data.
 
-Now, `transform.py` contains a Python script to parse the CSV file using `matplotlib` (
+Now, `transform.py` contains a Python script to parse the CSV file and create a PNG from it using `matplotlib` (
 [matplotlib notes](https://nbviewer.jupyter.org/github/pekoto/MyJupyterNotes/blob/master/Python%20for%20Data%20Analysis.ipynb)).
