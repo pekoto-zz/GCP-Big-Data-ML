@@ -29,8 +29,11 @@ https://console.cloud.google.com
 1. https://cloud.google.com
 2. Compute --> Compute Engine --> VM Instances
 3. Create a new VM
+
 3.1 Allow full access to cloud APIs
+
 3.2 Since we will access the VM through SSH, we don't need to allow HTTP or HTTPS traffic
+
 4. Click SSH to connect
 
 At this stage, the new VM has no software.
