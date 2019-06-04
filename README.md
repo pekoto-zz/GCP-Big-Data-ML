@@ -49,3 +49,34 @@ The `ingest.sh` shell script contains the script to ingest data (`less ingest.sh
 
 Now, `transform.py` contains a Python script to parse the CSV file and create a PNG from it using `matplotlib` (
 [matplotlib notes](https://nbviewer.jupyter.org/github/pekoto/MyJupyterNotes/blob/master/Python%20for%20Data%20Analysis.ipynb)).
+
+([File details](https://github.com/GoogleCloudPlatform/datalab-samples/blob/master/basemap/earthquakes.ipynb))
+
+Run `./install_missing.sh` to get the missing Python libraries, and run the scripts mentioned above to get the CSV and generate the image.
+
+Now, since we have generated the image. Let's get it off the VM and delete the VM.
+
+To do this, we need to create some storage:
+Storage > Storage > Browser > Create Bucket
+
+Now, to view our bucket, we can use:
+
+`gsutil ls gs://[bucketname]` (hence why bucket names need to be globally unique)
+
+To copy out data to the bucket, we can use:
+
+`gsutil cp earthquakes.* gs://[bucketname]`
+
+So now we're finished with our VM, we can either:
+
+__STOP__
+Stop the machine. You will still pay for the disk, but not the processing power.
+
+__DELETE__
+Delete the machine. You won't pay for anything, but obviously you will lose all of the data.
+
+Now, we want to make our assets in storage publically available.
+To do this:
+Select files > Permissions > Add Members > `allUsers` > Grant `Storage Object Viewer` role.
+
+Now, you can use the public link to [view your assets](https://storage.googleapis.com/earthquakeg/earthquakes.htm).
