@@ -20,7 +20,7 @@ https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/welcome
 
 ## 2. Creating a VM on Compute Engine
 
-1. https://www.cloud.google.com
+1. https://cloud.google.com
 2. Compute --> Compute Engine --> VM Instances
 3. Create a new VM
 3.1 Allow full access to cloud APIs
