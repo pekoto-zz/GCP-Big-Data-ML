@@ -15,6 +15,7 @@ https://console.cloud.google.com
                0. Security
     -----------------------------------------
 
+
 2. Abstract away scaling, infrastructure
 1. Process, store, and deliver pipelines, ML models, etc.         
 0. Auth
