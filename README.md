@@ -94,6 +94,6 @@ Delete the machine. You won't pay for anything, but obviously you will lose all 
 
 Now, we want to make our assets in storage publically available.
 To do this:
-Select files > Permissions > Add Members > `allUsers` > Grant `Storage Object Viewer` role.
+Select Files > Permissions > Add Members > `allUsers` > Grant `Storage Object Viewer` role.
 
 Now, you can use the public link to [view your assets](https://storage.googleapis.com/earthquakeg/earthquakes.htm).
