@@ -145,9 +145,9 @@ Consider typical row-oriented databases. The data is stored in a row. This is gr
 
 However, what if you want to get all of the data from all rows from a single column?
 
-For this, we need to read every row, picking out just the columns we want.
+For this, we need to read every row, picking out just the columns we want. For example, we want the average age of all the people. This will be slower in row-oriented databases, because even an index on the age column wouldn't help. The DB will just do a sequential scan.
 
-Instead we can store the data column-wise. How does it know which columns to join together into a single set? Each column has a link back to the row number.
+Instead we can store the data column-wise. How does it know which columns to join together into a single set? Each column has a link back to the row number. Or, in terms of implementation, each column could be stored in a separate file. Then, each column for a given row is stored at the same offset in a given file. When you scan a column and find the data you want, the rest of the data for that record will be at the same offset in the other files.
 
 
 __Row oriented__
@@ -166,3 +166,10 @@ Smith:001,Jones:002,Johnson:003,Jones:004;
 Joe:001,Mary:002,Cathy:003,Bob:004;
 40000:001,50000:002,44000:003,55000:004;
 ```
+
+In terms of IO improvements, if you have 100 rows with 100 columns, it will be the difference between reading 100x2 vs. 100x100.
+
+It also becomes easier to horizontally scale -- make a new file to store more of that column.
+
+It is also easier to add a column -- just add a new file.
+
