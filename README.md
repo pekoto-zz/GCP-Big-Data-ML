@@ -109,11 +109,7 @@ There are 4 storage types:
 
 ## 4. Edge Network (networking)
 
-Edge node receives user's request and passes to the nearest Google data center.
-
-Content sent back to the user from multiple locations -- data centers, edge nodes, edge PoPs.
-
-_Edge computing: brings data storage closer to the location where it's needed. In contrast to cloud computing, edge computing does decentralized computing at the edge of the network.__
+Edge node receives the user's request and passes to the nearest Google data center.
 
 Consider node types (Hadoop):
 
@@ -121,7 +117,11 @@ Consider node types (Hadoop):
 2. Worker node: Stores data and performs calculations
 3. Edge node: Facilitate communication between users and master/worker nodes
 
-_Edge Point of Prescence_: Locations where Google interconnects with other networks. In general terms, a point at which two networks connect to one another. E.g., an ISP's PoP might consist of routers, switches and so on. When the user sends request the PoP connects them to the larger internet?
+_Edge computing: brings data storage closer to the location where it's needed. In contrast to cloud computing, edge computing does decentralized computing at the edge of the network.__
+
+_Edge Node (aka. Google Global Cache - GGC)_: Points close to the user. Network operators and ISPs deploy Google servers inside their network. E.g., YouTube videos could be cached on these edge nodes.
+
+_Edge Point of Prescence_: Locations where Google connects its network to the rest of the internet.
 
 https://peering.google.com/#/
 
@@ -131,3 +131,38 @@ Use Google IAM, etc. to provide security.
 
 BigQuery data is encrypted.
 
+## 6. Big Data Tool History
+
+1. __GFS__: Data can be stored in a distributed fashion
+2. __MapReduce__: Distributed processing, large scale processing across server clusters. Hadoop implementation
+3. __BigTable__: Record high volume of data
+4. __Dremel__: Breaks data into small chunks (shards) and compresses into columnar format, then uses query optimizer to process queries in parallel (service auto-manages data imbalances and scale)
+5. __Colossus, TensorFlow__: And more...
+
+## (Note on Columnar Databases)
+
+Consider typical row-oriented databases. The data is stored in a row. This is great when you want to query multiple columns from a single row.
+
+However, what if you want to get all of the data from all rows from a single column?
+
+For this, we need to read every row, picking out just the columns we want.
+
+Instead we can store the data column-wise. How does it know which columns to join together into a single set? Each column has a link back to the row number.
+
+
+__Row oriented__
+```
+RowId 	EmpId 	Lastname 	Firstname 	Salary
+001 	10 	    Smith 	    Joe      	40000
+002 	12 	    Jones 	    Mary 	    50000
+003 	11 	    Johnson 	Cathy 	    44000
+004 	22 	    Jones 	    Bob 	    55000 
+```
+
+__Column oriented__
+```
+10:001,12:002,11:003,22:004;
+Smith:001,Jones:002,Johnson:003,Jones:004;
+Joe:001,Mary:002,Cathy:003,Bob:004;
+40000:001,50000:002,44000:003,55000:004;
+```
