@@ -117,11 +117,11 @@ Consider node types (Hadoop):
 2. Worker node: Stores data and performs calculations
 3. Edge node: Facilitate communication between users and master/worker nodes
 
-_Edge computing: brings data storage closer to the location where it's needed. In contrast to cloud computing, edge computing does decentralized computing at the edge of the network.__
+__Edge computing__: brings data storage closer to the location where it's needed. In contrast to cloud computing, edge computing does decentralized computing at the edge of the network.
 
-_Edge Node (aka. Google Global Cache - GGC)_: Points close to the user. Network operators and ISPs deploy Google servers inside their network. E.g., YouTube videos could be cached on these edge nodes.
+__Edge Node (aka. Google Global Cache - GGC)__: Points close to the user. Network operators and ISPs deploy Google servers inside their network. E.g., YouTube videos could be cached on these edge nodes.
 
-_Edge Point of Prescence_: Locations where Google connects its network to the rest of the internet.
+__Edge Point of Prescence__: Locations where Google connects its network to the rest of the internet.
 
 https://peering.google.com/#/
 
