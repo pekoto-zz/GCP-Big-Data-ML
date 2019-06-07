@@ -97,3 +97,37 @@ To do this:
 Select Files > Permissions > Add Members > `allUsers` > Grant `Storage Object Viewer` role.
 
 Now, you can use the public link to [view your assets](https://storage.googleapis.com/earthquakeg/earthquakes.htm).
+
+## 3. Storage
+
+There are 4 storage types:
+
+1. __Multiregional__: Optimized for geo-redundancy, end-user latency
+2. __Regional__: High performance local access (common for data pipelines you want to run, rather than give global access)
+3. __Nearline__: Data accessed less than once a month
+4. __Coldline__: Data accessed less than once a year
+
+## 4. Edge Network (networking)
+
+Edge node receives user's request and passes to the nearest Google data center.
+
+Content sent back to the user from multiple locations -- data centers, edge nodes, edge PoPs.
+
+_Edge computing: brings data storage closer to the location where it's needed. In contrast to cloud computing, edge computing does decentralized computing at the edge of the network.__
+
+Consider node types (Hadoop):
+
+1. Master node: Controls which nodes perform which tasks. Most work is assigned to...
+2. Worker node: Stores data and performs calculations
+3. Edge node: Facilitate communication between users and master/worker nodes
+
+_Edge Point of Prescence_: Locations where Google interconnects with other networks. In general terms, a point at which two networks connect to one another. E.g., an ISP's PoP might consist of routers, switches and so on. When the user sends request the PoP connects them to the larger internet?
+
+https://peering.google.com/#/
+
+## 5. Security
+
+Use Google IAM, etc. to provide security.
+
+BigQuery data is encrypted.
+
