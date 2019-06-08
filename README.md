@@ -229,9 +229,14 @@ Google Cloud Platform applications:
 
 1. __Compute Engine__: Infrastructure as a service. Run virtual machines on demand in the cloud. 
 2. __Google Kubernetes Engine (GKE)__: Clusters of machines running containers (code packages with dependencies)
-3. __App Engine__: Platform as a service (PAAS). Run code in the cloud without worrying about infrastructure.
-4. __Cloud Functions__: Serverless environment. Functions as a service (FAAS). Executes code in response to events.
+3. __App Engine__: Platform as a service (PaaS). Run code in the cloud without worrying about infrastructure.
+4. __Cloud Functions__: Serverless environment. Functions as a service (FaaS). Executes code in response to events.
 
 App Engine: long-lived web applications that auto-scale to billions of users.
+
 Cloud functions: Code triggered by event, such as new file uploaded.
+
+__Serverless__
+
+Although this can mean different things, typically it now means functions as a service (FaaS). I.e., application code is hosted by a third party, eliminating need for server and hardware management. Applications are broken into functions that are scaled automatically.
 
