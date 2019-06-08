@@ -177,7 +177,7 @@ It is also easier to add a column -- just add a new file.
 
 __Public datasets__
 
-Go to 'BigQuery > Resources > Add Data > Explore public datasets' to add publically available datasets.
+Go to `BigQuery > Resources > Add Data > Explore public datasets` to add publically available datasets.
 
 You can query the datasets using SQL syntax:
 
@@ -222,3 +222,16 @@ Creating the table will run a job. The table will be created after the job compl
 Click preview to see some of the data.
 
 Then you can query the table like before.
+
+## 7. GCP Approaches
+
+Google Cloud Platform applications:
+
+1. __Compute Engine__: Infrastructure as a service. Run virtual machines on demand in the cloud. 
+2. __Google Kubernetes Engine (GKE)__: Clusters of machines running containers (code packages with dependencies)
+3. __App Engine__: Platform as a service (PAAS). Run code in the cloud without worrying about infrastructure.
+4. __Cloud Functions__: Serverless environment. Functions as a service (FAAS). Executes code in response to events.
+
+App Engine: long-lived web applications that auto-scale to billions of users.
+Cloud functions: Code triggered by event, such as new file uploaded.
+
