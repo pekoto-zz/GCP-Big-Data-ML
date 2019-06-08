@@ -223,6 +223,8 @@ Click preview to see some of the data.
 
 Then you can query the table like before.
 
+SQL Syntax for BigQuery: https://cloud.google.com/bigquery/docs/reference/standard-sql/
+
 ## 7. GCP Approaches
 
 Google Cloud Platform applications:
