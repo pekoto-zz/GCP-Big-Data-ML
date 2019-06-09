@@ -301,3 +301,37 @@ So because we store data off-cluster, the cluster only has to be available for a
 
 (Recall, you can shut down the compute nodes when not using them, so save your data in Cloud Storage, etc., instead of in the computer node disk.)
 
+## Lab 2
+
+__Creating Cloud SQL DBs__
+
+First, let's create a Cloud SQL instance to hold all of the recommendation data:
+
+`SQL > Create Instance > MySQL > Instance ID = 'rentals'`
+
+Now the script creates 3 tables:
+
+* Accomodation: Basic details
+* Rating: 1-to-many for accomodation to ratings and user-to-ratings
+* Recommendation: This will be populated by the recommendation engine
+
+`Connect to this instance > Connect using Cloud Shell`
+
+An `sql connect` command will prepopulate to connect to the DB, so you can now run commands as required.
+
+Use `show databases;` to show the registered DBs.
+
+Run the script to create the `recommendation_spark` database and underlying tables.
+
+__Ingesting Data__
+
+Now, before we can populate the Cloud SQL tables we just created, we need to stage the CSV files containing the data on Cloud Storage.
+To do this, we can either use Cloud Shell commands or the Console UI.
+
+Using Console UI:
+
+`Storage > Browser > Create Bucket > Upload CSV files`
+
+Now, click the `Import` function on the Cloud SQL page to populate the SQL tables from the CSV files.
+
+After querying the SQL tables to make sure they populated correctly, type `Exit` to exit.
