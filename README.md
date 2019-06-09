@@ -242,3 +242,43 @@ __Serverless__
 
 Although this can mean different things, typically it now means functions as a service (FaaS). I.e., application code is hosted by a third party, eliminating need for server and hardware management. Applications are broken into functions that are scaled automatically.
 
+## 8. Recommendation Systems
+
+A recommendation system requires 3 things:
+
+* Data
+* Model
+* Training/serving infrastructure
+
+_Point_: Train model on data, not rules.
+
+__RankBrain__
+
+ML applied to Google search. Rather than use heuristics (e.g., if in California and q='giants', show California giants), use previous data to train ML model and display results.
+
+__Building a recommendation system__
+
+1. Ingest existing data (input and output, e.g., user ratings of tagged data)
+2. Train model to predict output (e.g., user rating)
+3. Provide recommendation: rate all of the unrated products, show top n.
+
+Ratings will be based on:
+
+1. Who is this user like?
+2. Is this a good product? (other ratings?)
+3. Predicted rating = user-preference * item-quality
+
+Models can typically be updated once a day or once a week. It does not need to be streaming.
+Once computed, the recommendations can be stored in Cloud SQL.
+
+So compute the ratings use a batch job (__Dataproc__), and store them in __Cloud SQL__.
+
+__Storage systems__
+
+Roughly:
+
+1. __Cloud Storage__: Global file system
+2. __Cloud SQL__: Relational database (transactional/relational data accessed through SQL)
+3. __Datastore__: Transactional, NoSQL object-oriented database
+4. __Bigtable__: High throughput, NoSQL, __append-only__ data (not transactional)
+5. __BigQuery__: SQL data warehouse to power analytics
