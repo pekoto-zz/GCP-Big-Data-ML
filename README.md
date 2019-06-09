@@ -282,3 +282,5 @@ Roughly:
 3. __Datastore__: Transactional, NoSQL object-oriented database
 4. __Bigtable__: High throughput, NoSQL, __append-only__ data (not transactional)
 5. __BigQuery__: SQL data warehouse to power analytics
+
+![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/storage-table.jpg)
