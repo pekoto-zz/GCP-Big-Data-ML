@@ -285,3 +285,19 @@ Roughly:
 5. __BigQuery__: SQL data warehouse to power analytics _(seconds latency analytics)_
 
 ![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/storage-table.jpg)
+
+__Hadoop Ecosystem__
+
+1. __Hadoop__: MapReduce framework (HDFS)
+2. __Pig__: Scripting language that can be compiled into MapReduce jobs
+3. __Hive__: Data warehousing system and query language. Makes data on distributed file system look like an SQL DB.
+4. __Spark__: Lets you run queries on your data. Also ML, etc.
+
+__Storage__
+
+HDFS is used for working storage -- storage during the processing of the job.
+But all input and output data will be stored in Cloud Storage.
+So because we store data off-cluster, the cluster only has to be available for a run of the job.
+
+(Recall, you can shut down the compute nodes when not using them, so save your data in Cloud Storage, etc., instead of in the computer node disk.)
+
