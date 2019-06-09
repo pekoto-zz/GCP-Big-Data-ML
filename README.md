@@ -277,10 +277,11 @@ __Storage systems__
 
 Roughly:
 
-1. __Cloud Storage__: Global file system
-2. __Cloud SQL__: Relational database (transactional/relational data accessed through SQL)
-3. __Datastore__: Transactional, NoSQL object-oriented database
-4. __Bigtable__: High throughput, NoSQL, __append-only__ data (not transactional)
-5. __BigQuery__: SQL data warehouse to power analytics
+1. __Cloud Storage__: Global file system _(unstructured)_
+2. __Cloud SQL__: Relational database (transactional/relational data accessed through SQL) _(structured/transactional)_
+2.1 __Cloud Spanner__: Horizontal scalability (+ more than a few GBs, need a few DBs)
+3. __Datastore__: Transactional, NoSQL object-oriented database _(structured/transactional)_
+4. __Bigtable__: High throughput, NoSQL, __append-only__ data (not transactional)  _(millisecond latency analytics)_
+5. __BigQuery__: SQL data warehouse to power analytics _(seconds latency analytics)_
 
 ![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/storage-table.jpg)
