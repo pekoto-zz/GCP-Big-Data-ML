@@ -335,3 +335,24 @@ Using Console UI:
 Now, click the `Import` function on the Cloud SQL page to populate the SQL tables from the CSV files.
 
 After querying the SQL tables to make sure they populated correctly, type `Exit` to exit.
+
+__Dataproc__
+
+Now we will ue Dataproc to train the ML model based on previous ratings.
+
+We need to launch Dataproc and configure it so each machine in the cluster can access Cloud SQL.
+
+Dataproc let you provision Apache Hadoop clusters.
+
+After provisioning your cluster, run a bash script to patch each machine so that its IP is authorized to access the Cloud SQL instance.
+
+Copy over the Python recommendation model.
+
+You edit code via Cloud Shell by using: `cloudshell edit train_and_apply.py`
+
+Now run the job via Dataproc:
+
+`Dataproc console > Jobs > Submit job > Enter file containing job code/set parameters`
+
+The job will run through to populate the recommendations.
+
