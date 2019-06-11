@@ -363,8 +363,8 @@ Petabyte data warehoue. Two services in one:
 * Managed data storage
 
 
-* Pay for data stored and querie run, or flat tier
-* Analysis engine: takes in data and run analyis/model building
+* Pay for data stored and queries run, or flat tier
+* Analysis engine: takes in data and run analysis/model building
 * Can connect to BigQuery from other tools
 
 __Sample Query__
