@@ -356,3 +356,30 @@ Now run the job via Dataproc:
 
 The job will run through to populate the recommendations.
 
+## 9. BigQuery
+
+Petabyte data warehoue. Two services in one:
+* SQL Query Engine (serverless -- fully managed)
+* Managed data storage
+
+
+* Pay for data stored and querie run, or flat tier
+* Analysis engine: takes in data and run analyis/model building
+* Can connect to BigQuery from other tools
+
+__Sample Query__
+
+`Cloud console > Big Query > Create dataset > Create table (can upload from storage, etc.)`
+
+When writing queries, use the following format:
+
+`FROM [project (name? or id?)].[dataset].[table]`
+
+E.g.:
+
+`FROM surf-0123.fh-bigquery.flights`
+
+(Click on this query to view the table info)
+
+Click the down arrow > Run selected to just run the selected part of the query
+
