@@ -383,3 +383,19 @@ E.g.:
 
 Click the down arrow > Run selected to just run the selected part of the query
 
+__Architecture__
+
+    ----------------------------                          ----------------------------
+      BigQuery Storage Service    <-- Petabit network -->   BigQuery Query Service
+    ----------------------------                          ----------------------------
+     Project                                                 Run queries
+       Dataset A | Dataset B                                 Connectors to other products
+       Table 1   | Table 1*                                  
+       Table 2   | ...
+       ...       |
+    ----------------------------                          ----------------------------
+     * Tables stored as compressed 
+       column in Colossus
+     * Supports steams or data ingest
+
+
