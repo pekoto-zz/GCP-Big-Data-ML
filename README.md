@@ -377,7 +377,10 @@ When writing queries, use the following format:
 
 E.g.:
 
-`FROM surf-0123.fh-bigquery.flights`
+````
+SELECT COUNT(*) AS total_trips
+FROM `bigquery-public-data.san_francisco_bikeshare.bikeshare_trips`
+````
 
 (Click on this query to view the table info)
 
@@ -398,4 +401,18 @@ __Architecture__
        column in Colossus
      * Supports steams or data ingest
 
+
+__BigQuery Tips__
+
+* Ctrl/cmd-click on table name: view table
+* In details, click on field name to insert it into the query
+* Click More > Format to automatically format the query
+* Explore in Data Studio > visualize data
+* Save query > Save query data in project
+* `CREATE OR REPLACE TABLE [dataset].[tablename] AS [SQL QUERY]` to save the data into a table, saving you having to rerun the query every time
+* In the above, you could replace TABLE with VIEW, to just store the query itself. Helpful if the data is changing a lot.
+
+__Cloud Dataprep__
+
+Provides data on data quality. Provides data cleansing, etc.
 
