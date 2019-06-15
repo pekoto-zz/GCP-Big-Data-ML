@@ -863,6 +863,8 @@ For example:
 2. When a new worker joins, the HR system publishes a "NEW HIRE" event to the "HR" topic
 3. Then, downstream applications (facilities, badge activation system) who are subscribed to this topic can get the message and take action as appropriate
 
+## Cloud Dataflow
+
 __Apache Beam__
 
 * Used to implement batch or streaming data processing jobs.
@@ -886,3 +888,23 @@ __Workflow with Cloud Dataflow__
 A number of template pipelines are available:
 
 https://github.com/googlecloudplatform/dataflowtemplates
+
+## Data Studio
+
+* Provides data visualization
+* Data is live, not just a static image
+* Click `Explore in Data Studio` in BigQuery
+
+__Creating a report__
+
+1. Create new report
+2. Select a data source (can have multiple data sources)
+3. Create charts: click and draw
+
+Data Studio uses _Dimensions_ and _Metric_ chips.
+
+* __Dimensions__: Categories or buckets of information (area code, etc.). Shown in green.
+* __Metric__: Measure dimension values. Measurements, aggregations, count, etc. Shown in blue.
+
+Use __calculated fields__ to create your own metrics.
+
