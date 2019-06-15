@@ -831,7 +831,7 @@ ORDER BY
 
 # WEEK 2
 
-## Data Pipelines
+## Data Pipelines
 
 Ingesting real-time data poses a number of challenges:
 
@@ -839,7 +839,7 @@ Ingesting real-time data poses a number of challenges:
 2. Have to deal with data being late
 3. Have to deal with bad data coming in real time (duplicates, missing data, etc.)
 
-## Cloud Pub/Sub
+## Cloud Pub/Sub
 
 Distributed messaging system to handle real-time messaging.
 
