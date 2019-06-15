@@ -416,3 +416,19 @@ __Cloud Dataprep__
 
 Provides data on data quality. Provides data cleansing, etc.
 
+## 10. SQL Array and Structs
+
+Splitting the data into different tables requires joins or, possibly, denormalization.
+
+To avoid this, we can use two features:
+
+__SQL Structs (Records)__
+
+These are a datatype that is essentially a collection of fields. You can think of it like a table inside another table.
+
+__Array Datatype__
+
+Lets you have multiple fields associated with a single row.
+
+![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/sql_struct.jpg)
+
