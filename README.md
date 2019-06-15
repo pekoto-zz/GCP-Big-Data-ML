@@ -432,3 +432,51 @@ Lets you have multiple fields associated with a single row.
 
 ![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/sql_struct.jpg)
 
+## 11. ML Model
+
+Some terms...
+
+* __Instance/observation__: A row of data in the table
+* __Label__: Correct answer known historically (e.g., how much this customer spent), in future data this is what you want to know
+* __Feature columns__: Other columns in the table (i.e., used in model, but you don't want to predict them)
+
+__BigQuery ML (BQML)__
+
+In BigQuery, we can build models in SQL.
+
+First, build the model in SQL:
+
+````
+CREATE MODEL numbikes.model
+OPTIONS
+(model_type='linear_reg', labels=['num_trips']) AS
+WITH bike_data AS
+(
+SELECT COUNT(*) a num_trims,
+...
+````
+
+Second, write a SQL prediction query:
+
+````
+SELECT predicted_num_trips, num_trips, trip_date
+FROM
+ml.PREDICT(MODEL 'numbikes.model...
+
+````
+
+BigQuery's SQL models will:
+
+1. Auto-tune learning rate
+2. Auto-splits data into training and test
+(though these hyperparameters can be set manually too)
+
+__Process__
+
+The general process looks like this:
+
+1. Get data into BigQuery
+2. Preprocess features (select features) -- create training set
+3. Create model in BigQuery (`CREATE MODEL`)
+4. Evaluate model
+5. Make predictions with model (`ML.predict`)
