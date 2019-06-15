@@ -863,3 +863,11 @@ For example:
 2. When a new worker joins, the HR system publishes a "NEW HIRE" event to the "HR" topic
 3. Then, downstream applications (facilities, badge activation system) who are subscribed to this topic can get the message and take action as appropriate
 
+__Apache Beam__
+
+* Used to implement batch or streaming data processing jobs.
+* Pipelines written in Java, Python, or Go
+* Creates a model representation of code which is portable across many __runners__
+* Runners pass models to an execution environment, which can run on many different engines (e.g., Spark, Cloud Dataflow)
+* Transformations can be done in parallel, making pipelines scalable
+
