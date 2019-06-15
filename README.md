@@ -5,6 +5,8 @@ https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/welcome
 
 https://console.cloud.google.com
 
+# WEEK 1
+
 ## 1. Google Cloud Architecture
 
     -----------------------------------------
@@ -826,3 +828,38 @@ SELECT
 ORDER BY
   predicted_will_buy_on_return_visit DESC;
 ```
+
+# WEEK 2
+
+## Data Pipelines
+
+Ingesting real-time data poses a number of challenges:
+
+1. Have to scale in real time
+2. Have to deal with data being late
+3. Have to deal with bad data coming in real time (duplicates, missing data, etc.)
+
+## Cloud Pub/Sub
+
+Distributed messaging system to handle real-time messaging.
+
+    --------------------------------------------------------------------------------------------------------------------
+
+       (sensor data, etc.) > Cloud Pub/Sub > Cloud Dataflow > BigQuery/Cloud Storage > Exploration/Visualization Apps
+                             [Ingests data,   [Subscribes to
+                              publishes to      Cloud Pub/Sub]
+                              subscribers
+    --------------------------------------------------------------------------------------------------------------------
+
+_Serverless Big Data Pipeline_
+
+__Cloud Pub/Sub Architecture__
+
+Cloud Pub/Sub uses __topics__. These are like channels that is publishes. Subscribers can listen to these topics and pick up messages that are published.
+
+For example:
+
+1. Setup Pub/Sub with a topic called "HR"
+2. When a new worker joins, the HR system publishes a "NEW HIRE" event to the "HR" topic
+3. Then, downstream applications (facilities, badge activation system) who are subscribed to this topic can get the message and take action as appropriate
+
