@@ -439,6 +439,10 @@ Some terms...
 * __Instance/observation__: A row of data in the table
 * __Label__: Correct answer known historically (e.g., how much this customer spent), in future data this is what you want to know
 * __Feature columns__: Other columns in the table (i.e., used in model, but you don't want to predict them)
+* __One hot encoding__: Turning enums into a matrix of 1s so a not to skew the model
+
+![image](https://cdn-images-1.medium.com/max/2400/1*Ac4z1rWWuU0TzxJRUM62WA.jpeg)
+
 
 __BigQuery ML (BQML)__
 
@@ -480,3 +484,15 @@ The general process looks like this:
 3. Create model in BigQuery (`CREATE MODEL`)
 4. Evaluate model
 5. Make predictions with model (`ML.predict`)
+
+__BQML Cheatsheet__
+
+* __Label__: Alias a column as 'label', or specify column(s) in OPTIONS using input_label_cols (reminder: labels are what is currently known in training data, but what you want to predict)
+* __Feature__: Table columns used as SQL SELECT statement (`SELECT * FROM ML.FEATURE_INFO(MODEL `mydataset.mymodel`)` to get info about that column after model is trained)
+* __Model__: An object created in BigQuery that resides in BigQuqery dataset
+* __Model Types__: Linear regression (predict on numeric field), logistic regression (discrete class -- high or low, spam not spam, etc.) (`CREATE OR REPLACE MODEL <dataset>.<name> OPTIONS(model_type='<type>') AS <training dataset>`)
+* __Training Progress__: `SELECT * FROM ML.TRAINING_INFO(MODEL `mydataset.mymodel``
+* __Inspect Weights__: `SELECT * FROM ML.WEIGHTS(MODEL `mydataset.mymodel`, (<query>))`
+* __Evaluation__: `SELECT * FROM ML.EVALUATE(MODEL `mydataset.mymodel`)
+* __Prediction__: `SELECT * FROM ML.PREDICT(MODEL `mydataet.mymodel`, (<query>))`
+
