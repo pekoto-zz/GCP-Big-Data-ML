@@ -523,7 +523,7 @@ FROM visitors, purchasers
 
 Find the top 5 selling products:
 
-```
+```sql
 SELECT
 p.v2ProductName,
 p.v2ProductCategory,
@@ -537,24 +537,57 @@ ORDER BY revenue DESC
 LIMIT 5;
 ```
 
+This query:
+1. Creates a table containing a row for all of hits `UNNEST(hits)`
+2. Creates a table containing all of the products in hits `UNNEST(h.product)`
+3. Select the various fields
+4. Groups by product name and product category
+
+The `UNNEST` keyword takes an array and returns a table with a single row for each element in the array.
+`OFFSET` will help to retain the ordering of the array.
+
+```
+SELECT *
+FROM UNNEST(['foo', 'bar', 'baz', 'qux', 'corge', 'garply', 'waldo', 'fred'])
+  AS element
+WITH OFFSET AS offset
+ORDER BY offset;
+
++----------+--------+
+| element  | offset |
++----------+--------+
+| foo      | 0      |
+| bar      | 1      |
+| baz      | 2      |
+| qux      | 3      |
+| corge    | 4      |
+| garply   | 5      |
+| waldo    | 6      |
+| fred     | 7      |
++----------+--------+
+
+```
+
+`GROUP BY 1,2` refers to the first and second items in the select list.
+
 Analytics schema:
 
 https://support.google.com/analytics/answer/3437719?hl=en
 
 __Create the model__
 
-```
+```sql
 CREATE OR REPLACE MODEL `ecommerce.classification_model`
 OPTIONS
 (
-model_type='logistic_reg',
-labels = ['will_buy_on_return_visit']
+model_type='logistic_reg', # Since we want to classify as A/B
+labels = ['will_buy_on_return_visit'] # Set the thing we want to predict
 )
 AS
 
 #standardSQL
 SELECT
-  * EXCEPT(fullVisitorId)
+  * EXCEPT(fullVisitorId) 
 FROM
 
   # features
@@ -580,13 +613,40 @@ FROM
 
 After running, the query will create a new ML model in `project:dataset.model`
 
+`EXCEPT` will return all of the rows in the left query not in the right query.
+
+For example:
+
+```sql
+  WITH a AS (
+SELECT * FROM UNNEST([1,2,3,4]) AS n
+
+    ), b AS (
+SELECT * FROM UNNEST([4,5,6,7]) AS n)
+
+SELECT * FROM a
+
+EXCEPT DISTINCT
+
+SELECT * FROM b
+
+-- | n |
+-- | 1 |
+-- | 2 |
+-- | 3 |
+```
+
+
 __Evaluate the model__
+
+One feature we can use to evaluate the model is the receiver operating characteristic (ROC).
+Essentially this shows the quality of a binary classifier by mapping true positive rates against false positive rates.
 
 We want to get the area under the curve as close as possible to 1.0
 
 https://cdn.qwiklabs.com/GNW5Bw%2B8bviep9OK201QGPzaAEnKKyoIkDChUHeVdFw%3D
 
-```
+```sql
 SELECT
   roc_auc,
   CASE
@@ -629,7 +689,7 @@ __Improving the model__
 
 We can improve the model by adding more features:
 
-```
+```sql
 CREATE OR REPLACE MODEL `ecommerce.classification_model_2`
 OPTIONS
   (model_type='logistic_reg', labels = ['will_buy_on_return_visit']) AS
@@ -699,7 +759,7 @@ Now we have a better model, we can make predictions.
 
 __Make predictions__
 
-```
+```sql
 SELECT
 *
 FROM
