@@ -871,3 +871,18 @@ __Apache Beam__
 * Runners pass models to an execution environment, which can run on many different engines (e.g., Spark, Cloud Dataflow)
 * Transformations can be done in parallel, making pipelines scalable
 
+__Workflow with Cloud Dataflow__
+
+![image](https://raw.githubusercontent.com/pekoto/GCP-Big-Data-ML/master/images/cloud-dataflow-beam.jpg)
+
+1. Write code to create model in Beam
+2. Beam passes a job to Cloud Dataflow
+3. Once it receives it, Cloud Dataflow's service:
+* Optimizes execution graph
+* Schedules out to workers in distributed fashion
+* Auto-heal if workers encounter errors
+* Connect to data sinks to produce results (e.g., BigQuery)
+
+A number of template pipelines are available:
+
+https://github.com/googlecloudplatform/dataflowtemplates
