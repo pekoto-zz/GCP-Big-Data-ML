@@ -500,7 +500,7 @@ __BQML Cheatsheet__
 
 Get the conversion rate:
 
-```
+```sql
 WITH visitors AS(
 SELECT
 COUNT(DISTINCT fullVisitorId) as total_visitors
