@@ -918,4 +918,78 @@ __Create a BigQuery dataset_
 
 Messages published into Pub/Sub will be stored in BigQuery.
 
-1. 
+1. In Cloud Shell, run `bq mk taxirides` to create a dataset called `taxirides` in BigQuery
+2. Now create a table inside the dataset:
+
+```
+bq mk \
+--time_partitioning_field timestamp \
+--schema ride_id:string,point_idx:integer,latitude:float,longitude:float,\
+timestamp:timestamp,meter_reading:float,meter_increment:float,ride_status:string,\
+passenger_count:integer -t taxirides.realtime
+```
+
+__Create a Cloud Storage bucket__
+
+1. Storage > Create Bucket
+2. Name must be globally unique (e.g., project id)
+
+__Setup Cloud Dataflow Pipeline__
+
+1. Navigation > Dataflow
+2. Create job from template
+3. Type > Cloud Pub/Sub topic to BigQuery template
+4. Input topic > projects/pubsub-public-data/topics/taxirides-realtime
+5. Output table > qwiklabs-gcp-72fdadec78efe24c:taxirides.realtime
+6. Temporary location > gs://qwiklabs-gcp-72fdadec78efe24c/tmp/
+7. Click run job
+
+Cloud Dataflow will now show a visualization of the Dataflow job running.
+
+__Analyze streaming data__
+
+You can check the data in BigQuery:
+
+`SELECT * FROM taxirides.realtime LIMIT 10;`
+
+See aggregated per/minute ride data:
+
+```sql
+WITH streaming_data AS (
+
+SELECT
+  timestamp,
+  TIMESTAMP_TRUNC(timestamp, HOUR, 'UTC') AS hour,
+  TIMESTAMP_TRUNC(timestamp, MINUTE, 'UTC') AS minute,
+  TIMESTAMP_TRUNC(timestamp, SECOND, 'UTC') AS second,
+  ride_id,
+  latitude, 
+  longitude,
+  meter_reading,
+  ride_status,
+  passenger_count
+FROM
+  taxirides.realtime
+WHERE ride_status = 'dropoff'
+ORDER BY timestamp DESC
+LIMIT 100000
+
+)
+
+# calculate aggregations on stream for reporting:
+SELECT 
+ ROW_NUMBER() OVER() AS dashboard_sort,
+ minute,
+ COUNT(DISTINCT ride_id) AS total_rides,
+ SUM(meter_reading) AS total_revenue,
+ SUM(passenger_count) AS total_passengers
+FROM streaming_data
+GROUP BY minute, timestamp
+```
+
+__Explore in Data Studio__
+
+1. Click `Explore in Data Studio`
+2. Set up dimensions and metrics as desired
+
+Once finished, stop the Cloud Dataflow pipeline job.
