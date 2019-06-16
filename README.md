@@ -908,3 +908,14 @@ Data Studio uses _Dimensions_ and _Metric_ chips.
 
 Use __calculated fields__ to create your own metrics.
 
+## Lab 1
+
+__Cloud Pub/Sub topics__
+
+Cloud Pub/Sub lets decouples senders and receivers. Senders send messages to a Cloud Pub/Sub _topic_, and receivers subscribe to this topic.
+
+__Create a BigQuery dataset_
+
+Messages published into Pub/Sub will be stored in BigQuery.
+
+1. 
