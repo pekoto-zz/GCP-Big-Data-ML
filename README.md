@@ -993,3 +993,6 @@ __Explore in Data Studio__
 2. Set up dimensions and metrics as desired
 
 Once finished, stop the Cloud Dataflow pipeline job.
+
+## ML on Unstructured Datasets
+
