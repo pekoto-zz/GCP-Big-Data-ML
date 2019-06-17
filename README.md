@@ -1014,5 +1014,7 @@ Use to extend the capabilities of the AI building block without code.
 For example, extend Vision API to recognize cloud types by uploading photos of clouds with type labels.
 A __confusion matrix__ shows the % of labels that were correctly/incorrectly labelled.
 
+Uses __neural architecture search__ to build several models and extract the best one.
+
 ## Lab 2
 
