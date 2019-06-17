@@ -1018,3 +1018,35 @@ Uses __neural architecture search__ to build several models and extract the best
 
 ## Lab 2
 
+__Get an API key__
+
+* APIs and Services > Credentials > Create Credentials > API Key
+
+In Cloud Shell, set the API Key as an environment variable:
+
+`export API_KEY=<YOUR_API_KEY>`
+
+__Create storage bucket__
+
+* Storage > Create bucket > <project id>
+    
+Make the bucket publically available:
+
+`gsutil acl ch -u AllUsers:R gs://qwiklabs-gcp-005f9de6234f0e59/*`
+
+Then click the public link to check it worked.
+
+__Create JSON request__
+
+You can use Emacs in Cloud Shell:
+
+1. `emacs`
+2. `c-X c-F` to create file (this finds file, but type in the file name you want to create and it will create it as an empty buffer)
+3. `c-X c-C` to save file and kill terminal
+
+__Send the request__
+
+Use `curl` to send the request:
+
+`curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
+
