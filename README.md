@@ -994,5 +994,25 @@ __Explore in Data Studio__
 
 Once finished, stop the Cloud Dataflow pipeline job.
 
-## ML on Unstructured Datasets
+## Approaches to ML
+
+1. Use pre-built AI
+- Lack enough data to build your own model
+
+2. Add custom models
+- Requires 100,000~millions of records of sample data
+
+3. Create new models
+
+
+Use pre-built ML building blocks. E.g., https://console.cloud.google.com/vision/
+For example, use vision API to extract text and translate API to tranlate it.
+
+## AutoML
+
+Use to extend the capabilities of the AI building block without code.
+For example, extend Vision API to recognize cloud types by uploading photos of clouds with type labels.
+A __confusion matrix__ shows the % of labels that were correctly/incorrectly labelled.
+
+## Lab 2
 
