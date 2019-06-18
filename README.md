@@ -1094,3 +1094,19 @@ Now that we've training our model, we can use it to make some predictions on uns
 1. Go to the `Predict` tab
 
 2. Unload images to see predictions
+
+## Building a Custom Model
+
+There are threes ways to build custom models in GCP:
+
+1. Using SQL models
+2. AutoML
+3. ML Engine Notebook (Jupyter) (can write own model with Keras)
+
+## Further Courses
+
+* From Data to Insights
+* Data Engineering
+* ML on GCP
+* Adv ML on GCP
+
