@@ -1044,9 +1044,53 @@ You can use Emacs in Cloud Shell:
 2. `c-X c-F` to create file (this finds file, but type in the file name you want to create and it will create it as an empty buffer)
 3. `c-X c-C` to save file and kill terminal
 
+(nano seems to work better in Cloud Shell)
+
 __Send the request__
 
 Use `curl` to send the request:
 
 `curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
 
+Now, the response will provide some labels based on the pretrained model, but what if we want the model to be able to detect our own labels? In that case, we can feed in some of our own training data. To do this custom training, we can use _AutoML_.
+
+__AutoML__
+
+Once setup, AutoML will create a new bucket with the suffix `-vcm`.
+1. Bind a new environment variable to this bucket:
+
+`export BUCKET=<YOUR_AUTOML_BUCKET>`
+
+2. Copy over the training data:
+
+`gsutil -m cp -r gs://automl-codelab-clouds/* gs://${BUCKET}`
+
+3. Now we need to set up a CSV file that tells AutoML where to find each image and the labels associated with each image. We just copy it over:
+
+`gsutil -m cp -r gs://automl-codelab-clouds/* gs://${BUCKET}`
+
+4. Now copy the file to your bucket:
+
+`gsutil cp ./data.csv gs://${BUCKET}`
+
+5. Now, back in the AutoML Vision UI, click `New Dataset > clouds > Select a CSV file on Cloud Storage > Create Dataset`
+
+The images will be imported from the CSV. After the images have been imported, you can view them and check their labels, etc. You can also change the labels, etc.
+
+(You want _at least_ 100 images for training.)
+
+6. Click train to start training.
+
+After the model has finished training, you can check the accuracy of the model:
+
+* __Precision__: What proportion of +ve identifications were correct?
+* __Recall__: What propotion of actual +ves was identified correctly?
+(1.0 = good score)
+
+__Generating Predictions__
+
+Now that we've training our model, we can use it to make some predictions on unseen data.
+
+1. Go to the `Predict` tab
+
+2. Unload images to see predictions
